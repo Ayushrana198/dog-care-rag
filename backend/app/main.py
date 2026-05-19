@@ -3,10 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.chat import router as chat_router
 
-app = FastAPI(
-    title="Dog Care RAG Chatbot",
-    version="1.0.0"
-)
+app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
@@ -18,11 +15,11 @@ app.add_middleware(
 
 app.include_router(chat_router)
 
+
 @app.get("/")
 async def root():
-    return {
-        "message": "Dog Care RAG Backend Running"
-    }
+    return {"message": "Dog Care RAG API Running"}
+
 
 @app.get("/health")
 async def health():
