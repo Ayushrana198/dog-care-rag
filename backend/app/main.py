@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.api.chat import router as chat_router
+
 app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc",
@@ -14,11 +16,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(chat_router)
+
 
 @app.get("/")
 async def root():
     return {
-        "message": "API Running"
+        "message": "Dog Care RAG API Running"
     }
 
 
