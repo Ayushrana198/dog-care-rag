@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API_BASE_URL =
-  "https://dog-care-rag-production.up.railway.app";
+  process.env.NEXT_PUBLIC_API_URL;
 
 export const chatWithBot = async (
   message: string
